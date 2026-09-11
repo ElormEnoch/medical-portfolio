@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>[Your Name] — Prosthetic &amp; Orthotic Fabrication Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carbon:#1C2023;
+    --ink:#33393A;
+    --mist:#F1F3F2;
+    --stone:#E7E2D9;
+    --amber:#B5762C;
+    --amber-deep:#8F5C21;
+    --teal:#2F6E68;
+    --line:#D6D2C8;
+    --white:#FFFFFF;
+    --radius-sm:2px;
+    --radius-md:3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--mist);
+    color:var(--ink);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Archivo', sans-serif;
+    color:var(--carbon);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(241,243,242,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 0;
+  }
+  .nav-mark{
+    font-family:'Archivo';font-weight:700;font-size:1.05rem;color:var(--carbon);
+    text-decoration:none;
+  }
+  .nav-mark span{color:var(--amber);}
+  nav.nav-links{display:flex;gap:32px;}
+  nav.nav-links a{
+    font-size:0.92rem;text-decoration:none;color:var(--ink);
+    padding:4px 0;border-bottom:1px solid transparent;
+  }
+  nav.nav-links a:hover{border-bottom:1px solid var(--amber);}
+  .nav-cta{
+    font-size:0.85rem;font-weight:500;
+    background:var(--carbon);color:var(--white);
+    padding:10px 18px;border-radius:var(--radius-sm);
+    text-decoration:none;
+  }
+  .nav-toggle{display:none;}
+  @media(max-width:800px){
+    nav.nav-links{display:none;}
+    .nav-cta{padding:9px 14px;font-size:0.8rem;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 96px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
+  .hero-kicker{
+    font-family:'IBM Plex Mono';font-size:0.82rem;color:var(--amber-deep);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.2vw, 3.4rem);
+    font-weight:700;
+    line-height:1.08;
+  }
+  .hero p.lede{
+    margin-top:22px;font-size:1.08rem;color:var(--ink);max-width:46ch;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 22px;border-radius:var(--radius-sm);
+    font-size:0.92rem;font-weight:500;text-decoration:none;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--carbon);color:var(--white);}
+  .btn-primary:hover{background:#000;}
+  .btn-ghost{border-color:var(--carbon);color:var(--carbon);}
+  .btn-ghost:hover{background:var(--carbon);color:var(--white);}
+
+  .hero-diagram{position:relative;}
+  .hero-diagram svg{width:100%;height:auto;}
+  .diagram-caption{
+    margin-top:14px;font-family:'IBM Plex Mono';font-size:0.74rem;
+    color:#6B7170;text-align:center;
+  }
+
+  .hero-specs{
+    display:flex;gap:36px;margin-top:56px;padding-top:32px;border-top:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .spec-item .n{font-family:'Archivo';font-weight:700;font-size:1.5rem;color:var(--carbon);}
+  .spec-item .l{font-size:0.82rem;color:#6B7170;margin-top:4px;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:88px 0;border-bottom:1px solid var(--line);}
+  .section-head{
+    display:grid;grid-template-columns:0.9fr 1.5fr;gap:40px;margin-bottom:52px;
+  }
+  @media(max-width:800px){.section-head{grid-template-columns:1fr;gap:16px;}}
+  .section-num{font-family:'IBM Plex Mono';font-size:0.82rem;color:var(--amber-deep);}
+  .section-head h2{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-top:10px;}
+  .section-head .desc{color:#565C5B;max-width:52ch;padding-top:6px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+  .about-portrait{
+    aspect-ratio:4/5;background:var(--stone);border-radius:var(--radius-md);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono';font-size:0.8rem;color:#8A8578;
+    border:1px solid var(--line);
+  }
+  .about-copy p{margin:0 0 18px;color:var(--ink);}
+  .pull{
+    border-left:2px solid var(--amber);padding-left:20px;margin:28px 0;
+    font-family:'Archivo';font-size:1.15rem;color:var(--carbon);font-weight:600;
+  }
+
+  /* ---------- CAPABILITIES ---------- */
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:800px){.cap-grid{grid-template-columns:1fr;}}
+  .cap-cell{background:var(--mist);padding:30px 28px;}
+  .cap-cell h3{font-size:1rem;display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .cap-icon{width:20px;height:20px;flex:none;color:var(--amber-deep);}
+  .cap-cell ul{margin:0;padding:0;list-style:none;}
+  .cap-cell li{
+    font-size:0.9rem;color:var(--ink);padding:8px 0;border-top:1px solid var(--line);
+  }
+  .cap-cell li:first-of-type{border-top:none;}
+
+  /* ---------- PROCESS ---------- */
+  .process-rail{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;
+  }
+  @media(max-width:900px){.process-rail{grid-template-columns:1fr;}}
+  .process-rail::before{
+    content:"";position:absolute;top:15px;left:0;right:0;height:1px;background:var(--line);
+  }
+  @media(max-width:900px){.process-rail::before{display:none;}}
+  .p-step{position:relative;padding:0 16px 0 0;}
+  @media(max-width:900px){.p-step{padding:0 0 28px 0;border-left:1px solid var(--line);padding-left:24px;margin-left:6px;}}
+  .p-num{
+    width:30px;height:30px;border-radius:50%;background:var(--mist);
+    border:1px solid var(--carbon);color:var(--carbon);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono';font-size:0.78rem;position:relative;z-index:2;margin-bottom:16px;
+  }
+  @media(max-width:900px){.p-num{position:absolute;left:-16px;top:-2px;background:var(--mist);}}
+  .p-step h4{font-size:0.92rem;margin-bottom:6px;}
+  .p-step p{font-size:0.82rem;color:#6B7170;margin:0;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{border-left:1px solid var(--line);padding-left:36px;}
+  .t-item{position:relative;padding-bottom:44px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";position:absolute;left:-41px;top:4px;width:9px;height:9px;
+    border-radius:50%;background:var(--amber);border:2px solid var(--mist);
+    box-shadow:0 0 0 1px var(--amber);
+  }
+  .t-date{font-family:'IBM Plex Mono';font-size:0.78rem;color:var(--amber-deep);margin-bottom:6px;}
+  .t-item h3{font-size:1.05rem;}
+  .t-org{font-size:0.9rem;color:#565C5B;margin-top:3px;margin-bottom:12px;}
+  .t-item p, .t-item li{font-size:0.92rem;color:var(--ink);}
+  .t-item ul{margin:0;padding-left:18px;}
+  .t-item li{margin-bottom:6px;}
+
+  /* ---------- CASE STUDIES ---------- */
+  .case{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;
+    padding:44px 0;border-top:1px solid var(--line);
+  }
+  .case:first-of-type{border-top:none;}
+  @media(max-width:900px){.case{grid-template-columns:1fr;}}
+  .case-media{
+    aspect-ratio:4/3;background:var(--stone);border:1px solid var(--line);
+    border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono';font-size:0.78rem;color:#8A8578;text-align:center;padding:20px;
+  }
+  .case-tag{
+    display:inline-block;font-family:'IBM Plex Mono';font-size:0.72rem;
+    color:var(--teal);border:1px solid var(--teal);border-radius:20px;
+    padding:4px 12px;margin-bottom:16px;
+  }
+  .case h3{font-size:1.3rem;margin-bottom:10px;}
+  .case .brief{color:#565C5B;font-size:0.95rem;margin-bottom:20px;}
+  .case-specs{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    margin:22px 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  @media(max-width:520px){.case-specs{grid-template-columns:1fr 1fr;}}
+  .case-specs .k{font-size:0.72rem;color:#8A8578;margin-bottom:4px;}
+  .case-specs .v{font-family:'IBM Plex Mono';font-size:0.86rem;color:var(--carbon);}
+  .case-outcome{font-size:0.92rem;}
+  .case-outcome strong{color:var(--carbon);}
+
+  /* ---------- EDUCATION / CERTS ---------- */
+  .ed-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  @media(max-width:800px){.ed-grid{grid-template-columns:1fr;}}
+  .ed-item{padding:20px 0;border-top:1px solid var(--line);}
+  .ed-item:first-child{border-top:none;padding-top:0;}
+  .ed-item h4{font-size:0.98rem;}
+  .ed-item .meta{font-size:0.84rem;color:#6B7170;margin-top:4px;}
+  .cert-list li{
+    font-size:0.9rem;padding:12px 0;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:12px;
+  }
+  .cert-list{list-style:none;margin:0;padding:0;}
+  .cert-list .yr{font-family:'IBM Plex Mono';font-size:0.78rem;color:#8A8578;white-space:nowrap;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:800px){.testi-grid{grid-template-columns:1fr;}}
+  .testi{background:var(--mist);padding:32px;}
+  .testi p.quote{font-family:'Archivo';font-size:1.02rem;color:var(--carbon);font-weight:500;line-height:1.5;margin:0 0 18px;}
+  .testi .who{font-size:0.84rem;color:#6B7170;}
+  .testi .who b{color:var(--ink);}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{background:var(--carbon);color:var(--mist);padding:80px 0 40px;}
+  .footer-grid{display:grid;grid-template-columns:1.2fr 0.8fr 0.8fr;gap:48px;}
+  @media(max-width:800px){.footer-grid{grid-template-columns:1fr;gap:36px;}}
+  footer h2{color:var(--white);font-size:clamp(1.8rem,3vw,2.4rem);max-width:16ch;}
+  footer p{color:#B7BCBA;font-size:0.95rem;max-width:42ch;margin-top:16px;}
+  .footer-col h5{
+    font-family:'IBM Plex Mono';font-size:0.76rem;color:#8B928F;
+    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px;font-weight:400;
+  }
+  .footer-col a{
+    display:block;color:#E4E6E4;text-decoration:none;font-size:0.92rem;
+    padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-col a:hover{color:var(--amber);}
+  .footer-bottom{
+    margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:'IBM Plex Mono';font-size:0.76rem;color:#7D8481;
+  }
+
+  /* reveal on hero load only */
+  .reveal{animation:riseIn 0.7s ease both;}
+  .reveal-delay{animation:riseIn 0.7s ease 0.15s both;}
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="nav-mark">[Your Name]<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" style="border-bottom:1px solid var(--line);padding-bottom:0;">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="hero-kicker">MEDICAL ENGINEERING GRADUATE — PROSTHETICS &amp; ORTHOTICS</div>
+        <h1>Building devices that carry weight every step of the day.</h1>
+        <p class="lede">
+          I design and fabricate patient-specific prosthetic and orthotic devices —
+          from initial cast through composite lamination to final fitting — with a
+          background in biomedical engineering and hands-on workshop practice.
+        </p>
+        <div class="hero-actions">
+          <a href="#case-studies" class="btn btn-primary">View case studies</a>
+          <a href="#" class="btn btn-ghost">Download CV (PDF)</a>
+        </div>
+      </div>
+
+      <div class="hero-diagram reveal-delay">
+        <svg viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a laminated prosthetic socket cross-section with material layers labelled">
+          <!-- limb / socket cross-section, layered lamination diagram -->
+          <path d="M170 40 C120 45 90 90 88 150 C86 220 100 290 130 340 L230 340 C255 290 262 220 258 150 C255 90 225 45 175 40 Z" stroke="#1C2023" stroke-width="1.4" fill="none"/>
+          <path d="M170 55 C130 60 105 98 103 150 C101 214 113 278 138 328 L222 328 C244 278 250 214 246 150 C244 98 218 60 176 55 Z" stroke="#B5762C" stroke-width="1.2" fill="none" stroke-dasharray="3 4"/>
+          <path d="M170 68 C138 73 118 105 116 150 C114 208 124 266 146 316 L214 316 C233 266 238 208 234 150 C232 105 210 73 178 68 Z" stroke="#2F6E68" stroke-width="1.2" fill="none" stroke-dasharray="1 5"/>
+
+          <!-- leader lines + labels -->
+          <line x1="88" y1="150" x2="30" y2="150" stroke="#8A8578" stroke-width="1"/>
+          <circle cx="88" cy="150" r="2.5" fill="#1C2023"/>
+          <text x="28" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="10" fill="#33393A">01 — nylon stockinette</text>
+
+          <line x1="103" y1="120" x2="30" y2="95" stroke="#8A8578" stroke-width="1"/>
+          <circle cx="103" cy="120" r="2.5" fill="#B5762C"/>
+          <text x="28" y="91" text-anchor="end" font-family="IBM Plex Mono" font-size="10" fill="#33393A">02 — carbon-fibre weave</text>
+
+          <line x1="234" y1="150" x2="392" y2="150" stroke="#8A8578" stroke-width="1"/>
+          <circle cx="234" cy="150" r="2.5" fill="#2F6E68"/>
+          <text x="394" y="146" text-anchor="start" font-family="IBM Plex Mono" font-size="10" fill="#33393A">03 — acrylic resin cure</text>
+
+          <line x1="222" y1="280" x2="392" y2="300" stroke="#8A8578" stroke-width="1"/>
+          <circle cx="222" cy="280" r="2.5" fill="#1C2023"/>
+          <text x="394" y="304" text-anchor="start" font-family="IBM Plex Mono" font-size="10" fill="#33393A">04 — distal end pad</text>
+
+          <line x1="130" y1="335" x2="130" y2="365" stroke="#8A8578" stroke-width="1"/>
+          <line x1="230" y1="335" x2="230" y2="365" stroke="#8A8578" stroke-width="1"/>
+          <line x1="130" y1="360" x2="230" y2="360" stroke="#8A8578" stroke-width="1"/>
+          <text x="180" y="376" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#6B7170">socket brim width</text>
+        </svg>
+        <div class="diagram-caption">FIG. 01 — transtibial socket, laminate layer schedule</div>
+      </div>
+    </div>
+
+    <div class="hero-specs">
+      <div class="spec-item"><div class="n mono">12+</div><div class="l">devices fabricated end-to-end</div></div>
+      <div class="spec-item"><div class="n mono">3</div><div class="l">clinical placements completed</div></div>
+      <div class="spec-item"><div class="n mono">BEng</div><div class="l">Biomedical / Medical Engineering</div></div>
+      <div class="spec-item"><div class="n mono">ISO 13485</div><div class="l">quality-systems familiarity</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">01 / About</div>
+      </div>
+      <div>
+        <h2>Engineering that starts with how a person moves, not just how a device is built.</h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-portrait">[ portrait photo placeholder — 4:5 ]</div>
+      <div class="about-copy">
+        <p>
+          I'm a medical engineering graduate with hands-on experience across the full
+          prosthetic and orthotic fabrication pathway — casting, rectification,
+          composite lamination, and fitting. My interest sits at the point where
+          biomechanics, materials science, and a patient's daily reality meet.
+        </p>
+        <p class="pull">
+          A socket that fits on paper and a socket that fits on a Tuesday morning walk
+          to work are two different design problems.
+        </p>
+        <p>
+          Alongside device fabrication, I've spent time in clinical settings observing
+          gait assessment and fitting sessions, which shapes how I think about
+          tolerances, comfort, and iteration — not just structural performance. I'm
+          equally comfortable in the workshop laying up carbon fibre as I am modelling
+          a socket in CAD or reading a materials data sheet.
+        </p>
+        <p>
+          I'm currently looking for a role where I can keep building that range —
+          deepening my fabrication craft while growing toward device design and
+          clinical R&amp;D.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section id="capabilities">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="section-num">02 / Capabilities</div></div>
+      <div><h2>What I bring into the workshop and the clinic.</h2></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="cap-grid">
+      <div class="cap-cell">
+        <h3><svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6h12M3 18h8"/></svg>Fabrication</h3>
+        <ul>
+          <li>Composite lamination (carbon fibre, fibreglass)</li>
+          <li>Vacuum forming &amp; thermoplastic moulding</li>
+          <li>Silicone &amp; gel liner fabrication</li>
+          <li>Cast modification &amp; rectification</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <h3><svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>Design &amp; Modelling</h3>
+        <ul>
+          <li>CAD/CAM: SolidWorks, Fusion 360, Rhino</li>
+          <li>3D scanning for residual limb capture</li>
+          <li>3D-printed check-socket prototyping</li>
+          <li>Design for manufacture (DFM) for composites</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <h3><svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12c2-6 6-9 8-9s6 3 8 9c-2 6-6 9-8 9s-6-3-8-9z"/><circle cx="12" cy="12" r="2.4"/></svg>Clinical &amp; Biomechanical</h3>
+        <ul>
+          <li>Gait observation &amp; alignment assessment</li>
+          <li>Pressure mapping interpretation</li>
+          <li>Residual limb assessment</li>
+          <li>Patient consultation &amp; fitting support</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <h3><svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>Materials Science</h3>
+        <ul>
+          <li>Resin systems &amp; cure behaviour</li>
+          <li>Composite layup schedules</li>
+          <li>Load-bearing vs. flexible component selection</li>
+          <li>Material data-sheet interpretation</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <h3><svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Standards &amp; Quality</h3>
+        <ul>
+          <li>ISO 13485 quality-system awareness</li>
+          <li>UK MDR device-classification familiarity</li>
+          <li>Fabrication documentation &amp; traceability</li>
+          <li>Workshop health &amp; safety (resin/composite handling)</li>
+        </ul>
+      </div>
+      <div class="cap-cell">
+        <h3><svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H7l-3 3V4z"/></svg>Collaboration</h3>
+        <ul>
+          <li>Working alongside prosthetists &amp; clinicians</li>
+          <li>Translating clinical notes into build specs</li>
+          <li>Patient-centred communication</li>
+          <li>Workshop &amp; lab teamwork</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="section-num">03 / Process</div></div>
+      <div><h2>The build pathway, from first cast to final fit.</h2></div>
+    </div>
+
+    <div class="process-rail">
+      <div class="p-step"><div class="p-num">1</div><h4>Assess</h4><p>Residual limb evaluation, gait observation, patient goals.</p></div>
+      <div class="p-step"><div class="p-num">2</div><h4>Cast</h4><p>Capture shape via plaster cast or 3D scan.</p></div>
+      <div class="p-step"><div class="p-num">3</div><h4>Rectify</h4><p>Modify the positive model for load and comfort zones.</p></div>
+      <div class="p-step"><div class="p-num">4</div><h4>Laminate</h4><p>Layer and cure composite materials over the model.</p></div>
+      <div class="p-step"><div class="p-num">5</div><h4>Fit</h4><p>Check socket trial, alignment, and pressure review.</p></div>
+      <div class="p-step"><div class="p-num">6</div><h4>Review</h4><p>Follow-up adjustment based on wear and feedback.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="section-num">04 / Experience</div></div>
+      <div><h2>Where I've built and learned this craft.</h2></div>
+    </div>
+
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-date mono">2025 — Present</div>
+        <h3>Fabrication Technician (Placement)</h3>
+        <div class="t-org">[Clinic / Workshop Name], [City]</div>
+        <ul>
+          <li>Fabricated transtibial and transfemoral sockets under supervision, from cast rectification through lamination.</li>
+          <li>Supported fitting sessions, documenting pressure points and adjustment outcomes for iteration.</li>
+          <li>Maintained lamination records and material traceability per workshop quality procedures.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <div class="t-date mono">2024</div>
+        <h3>Biomedical Engineering Placement Student</h3>
+        <div class="t-org">[Hospital / NHS Trust Name], [City]</div>
+        <ul>
+          <li>Observed multidisciplinary gait clinics and prosthetic review appointments.</li>
+          <li>Assisted with 3D scanning workflows for check-socket prototyping.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <div class="t-date mono">2022 — 2025</div>
+        <h3>BEng Medical / Biomedical Engineering</h3>
+        <div class="t-org">[University Name]</div>
+        <ul>
+          <li>Final-year project: [placeholder — e.g. "comparative lamination schedule for a lightweight transtibial socket"].</li>
+          <li>Coursework in biomechanics, materials science, and medical device design.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE STUDIES ================= -->
+<section id="case-studies">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="section-num">05 / Case Studies</div></div>
+      <div><h2>Selected builds, from brief to fitting.</h2></div>
+    </div>
+
+    <div class="case">
+      <div class="case-media">[ build-process photo set placeholder — cast, layup, cured socket ]</div>
+      <div>
+        <span class="case-tag">TRANSTIBIAL SOCKET</span>
+        <h3>Lightweight socket for an active-use patient</h3>
+        <p class="brief">
+          Design brief: reduce socket weight without compromising load tolerance for
+          a patient returning to regular walking activity, working from a prior
+          check-socket fitting.
+        </p>
+        <div class="case-specs">
+          <div><div class="k">MATERIAL</div><div class="v">Carbon-fibre / acrylic resin</div></div>
+          <div><div class="k">METHOD</div><div class="v">Vacuum lamination</div></div>
+          <div><div class="k">BUILD TIME</div><div class="v">~[X] days</div></div>
+        </div>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> [placeholder — e.g. "reduced socket weight by
+          roughly 15% versus the prior device while maintaining brim tolerance
+          within clinical fitting range, confirmed across two follow-up reviews."]
+        </p>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-media">[ build-process photo set placeholder — thermoplastic forming ]</div>
+      <div>
+        <span class="case-tag">ANKLE-FOOT ORTHOSIS</span>
+        <h3>Paediatric AFO with growth-adjustable trim lines</h3>
+        <p class="brief">
+          Design brief: fabricate an ankle-foot orthosis for a paediatric patient
+          that accommodates limb growth between fitting cycles, balancing rigidity
+          with comfort.
+        </p>
+        <div class="case-specs">
+          <div><div class="k">MATERIAL</div><div class="v">Polypropylene thermoplastic</div></div>
+          <div><div class="k">METHOD</div><div class="v">Vacuum-formed, hand-trimmed</div></div>
+          <div><div class="k">BUILD TIME</div><div class="v">~[X] days</div></div>
+        </div>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> [placeholder — e.g. "device accepted at first
+          fitting with only minor trim-line adjustment; follow-up review scheduled
+          at 3 months to reassess fit against growth."]
+        </p>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-media">[ build-process photo set placeholder — CAD model + printed check socket ]</div>
+      <div>
+        <span class="case-tag">DIGITAL WORKFLOW</span>
+        <h3>3D-scan-to-check-socket pipeline</h3>
+        <p class="brief">
+          Project brief: build a faster iteration loop between residual-limb
+          scanning and a wearable check socket, reducing time spent on plaster
+          modification.
+        </p>
+        <div class="case-specs">
+          <div><div class="k">TOOLS</div><div class="v">3D scanner, Fusion 360</div></div>
+          <div><div class="k">METHOD</div><div class="v">FDM-printed check socket</div></div>
+          <div><div class="k">ITERATIONS</div><div class="v">[X] design passes</div></div>
+        </div>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> [placeholder — e.g. "cut check-socket turnaround
+          time versus the plaster-only workflow, while keeping fit accuracy
+          comparable at final review."]
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION / CERTIFICATIONS ================= -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="section-num">06 / Education</div></div>
+      <div><h2>Formal training and certifications.</h2></div>
+    </div>
+
+    <div class="ed-grid">
+      <div>
+        <div class="ed-item">
+          <h4>BEng (Hons) Medical / Biomedical Engineering</h4>
+          <div class="meta">[University Name] · 2022 – 2025</div>
+        </div>
+        <div class="ed-item">
+          <h4>A-Levels / Foundation — Maths, Biology, Design &amp; Technology</h4>
+          <div class="meta">[School Name] · [Years]</div>
+        </div>
+      </div>
+
+      <div>
+        <ul class="cert-list">
+          <li><span>Composite Lamination &amp; Resin Safety</span><span class="yr mono">[Year]</span></li>
+          <li><span>Workshop Health &amp; Safety (Fabrication)</span><span class="yr mono">[Year]</span></li>
+          <li><span>Introduction to ISO 13485 Quality Systems</span><span class="yr mono">[Year]</span></li>
+          <li><span>CAD for Medical Devices (Fusion 360)</span><span class="yr mono">[Year]</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="section-num">07 / Feedback</div></div>
+      <div><h2>What supervisors have said.</h2></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="testi-grid">
+      <div class="testi">
+        <p class="quote">"Careful, methodical, and genuinely good with patients during fitting — rare to see that combination this early."</p>
+        <div class="who"><b>[Supervisor Name]</b> — Senior Prosthetist, [Clinic Name]</div>
+      </div>
+      <div class="testi">
+        <p class="quote">"Picked up our lamination process quickly and asked the right questions about tolerances before touching resin."</p>
+        <div class="who"><b>[Supervisor Name]</b> — Workshop Lead, [Company Name]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT / FOOTER ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Let's talk about your next build — or your next hire.</h2>
+        <p>
+          Open to fabrication, R&amp;D, and clinical engineering roles across
+          prosthetics and orthotics. Based in [City, Country] — open to relocation.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="tel:+440000000000">+44 [phone number]</a>
+        <a href="#">Download CV (PDF)</a>
+      </div>
+      <div class="footer-col">
+        <h5>Elsewhere</h5>
+        <a href="#">LinkedIn</a>
+        <a href="#">ResearchGate</a>
+        <a href="#">Instagram — build process</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© [YEAR] [YOUR NAME]. All device images shown with patient consent.</span>
+      <span>Built as a placeholder template — replace bracketed content before publishing.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
