@@ -257,6 +257,68 @@
     border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;
     font-family:'IBM Plex Mono';font-size:0.88rem;color:#7C7666;text-align:center;padding:22px;
   }
+  /* real media inside case frames */
+  figure.case-figure{margin:0;}
+  .case-media.has-media{
+    padding:0;overflow:hidden;background:var(--carbon);position:relative;
+    aspect-ratio:auto;display:block;
+  }
+  .case-media.has-media img,
+  .case-media.has-media video{
+    width:100%;height:100%;display:block;object-fit:cover;
+  }
+  .case-media.portrait{aspect-ratio:3/4;max-height:640px;}
+  .case-media.portrait img{object-position:center;}
+  .case-media.landscape{aspect-ratio:auto;background:var(--white);}
+  .case-media.landscape img{object-fit:contain;height:auto;}
+  .case-media.video{aspect-ratio:1600/828;}
+  .case-media.video video{object-fit:contain;background:#000;}
+  .case-media button.zoom{
+    all:unset;cursor:zoom-in;display:block;width:100%;height:100%;
+  }
+  .case-media button.zoom:focus-visible{outline:2px solid var(--amber);outline-offset:-4px;}
+  figcaption{
+    margin-top:12px;font-family:'IBM Plex Mono';font-size:0.82rem;color:#5F6564;
+  }
+  .case-media.text-panel{
+    background:var(--carbon);color:var(--mist);flex-direction:column;gap:10px;
+    font-family:'Archivo';
+  }
+  .case-media.text-panel .big{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;color:var(--white);line-height:1;}
+  .case-media.text-panel .small{font-family:'IBM Plex Mono';font-size:0.85rem;color:#B7BCBA;}
+  .case-media.text-panel .rule{width:48px;height:2px;background:var(--amber);margin:8px 0;}
+
+  /* portfolio cover banner (deck title slide) */
+  .portfolio-cover{
+    position:relative;border-radius:var(--radius-md);overflow:hidden;
+    min-height:260px;display:flex;align-items:center;margin-bottom:24px;
+    background:#0B1F3A url('media/portfolio-cover.jpg') right center/cover no-repeat;
+  }
+  .portfolio-cover::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(8,22,44,0.92) 0%,rgba(8,22,44,0.7) 50%,rgba(8,22,44,0) 85%);
+  }
+  @media(max-width:600px){.portfolio-cover::before{background:rgba(8,22,44,0.82);}}
+  .portfolio-cover .inner{position:relative;padding:44px 48px;max-width:560px;}
+  @media(max-width:600px){.portfolio-cover .inner{padding:32px 24px;}}
+  .portfolio-cover .kick{font-family:'IBM Plex Mono';font-size:0.85rem;color:#9CC7F0;letter-spacing:0.04em;}
+  .portfolio-cover .rule{width:120px;height:2px;background:#9CC7F0;margin:14px 0 18px;}
+  .portfolio-cover h3{color:var(--white);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;}
+  .portfolio-cover p{color:#D6E4F2;margin:12px 0 0;font-size:1rem;}
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;background:rgba(12,14,15,0.92);
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:var(--radius-sm);background:#fff;}
+  .lightbox .lb-cap{position:absolute;bottom:18px;left:24px;right:24px;text-align:center;color:#D0D4D2;font-family:'IBM Plex Mono';font-size:0.85rem;}
+  .lightbox .lb-close{
+    position:absolute;top:16px;right:18px;appearance:none;border:1px solid #666;background:transparent;
+    color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.4rem;cursor:pointer;
+  }
+
   .case-tag{
     display:inline-block;font-family:'IBM Plex Mono';font-size:0.8rem;
     color:var(--teal);border:1px solid var(--teal);border-radius:20px;
@@ -339,7 +401,7 @@
       <a href="#about">About</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#experience">Experience</a>
-      <a href="#case-studies">Case Studies</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -365,7 +427,7 @@
           direct patient-facing prosthetic and orthotic fabrication.
         </p>
         <div class="hero-actions">
-          <a href="#case-studies" class="btn btn-primary">View case studies</a>
+          <a href="#portfolio" class="btn btn-primary">View portfolio</a>
           <a href="#" class="btn btn-ghost">Download CV (PDF)</a>
         </div>
       </div>
@@ -473,7 +535,7 @@
       <div class="cap-cell">
         <h3><svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>Design &amp; Development</h3>
         <ul>
-          <li>SolidWorks, CAD, 3D modelling</li>
+          <li>SolidWorks, Onshape, CAD &amp; 3D modelling</li>
           <li>DfM, DfA, DfR</li>
           <li>User requirements &amp; weighted design criteria</li>
           <li>Concept generation, evaluation &amp; prototype testing</li>
@@ -599,64 +661,217 @@
   </div>
 </section>
 
-<!-- ================= CASE STUDIES ================= -->
-<section id="case-studies">
+<!-- ================= PORTFOLIO (mirrors "Medical Engineer Portfolio" deck) ================= -->
+<section id="portfolio">
   <div class="wrap">
     <div class="section-head">
-      <div><div class="section-num">05 / Case Studies</div></div>
-      <div><h2>Selected builds, from brief to fitting.</h2></div>
+      <div><div class="section-num">05 / Portfolio</div></div>
+      <div><h2>Selected work, from materials lab to fitting room.</h2></div>
     </div>
 
-    <div class="case">
-      <div class="case-media">[ photo placeholder — orthotics department records/log ]</div>
+    <!-- <div class="portfolio-cover" role="img" aria-label="Medical Engineer Portfolio cover">
+      <div class="inner">
+        <div class="kick">MEDICAL ENGINEER PORTFOLIO</div>
+        <div class="rule"></div>
+        <h3>Angela Elinam Atsu</h3>
+        <p>Materials development, mechanical testing, prosthetic &amp; orthotic fabrication, clinical casting and CAD.</p>
+      </div>
+    </div> -->
+
+    <!-- 01 · Palm kernel husk–HDPE composite -->
+    <div class="case" id="pkh-hdpe">
+      <figure class="case-figure">
+        <div class="case-media has-media landscape">
+          <button class="zoom" type="button" data-full="media/pkh-hdpe-composite-process.png" data-cap="Palm kernel husk–HDPE composite: process flow">
+            <img src="media/pkh-hdpe-composite-process.png" alt="Process flow: sample acquisition, size reduction, sieving, microscopy, characterization, surface treatment, sample preparation and testing" loading="lazy" width="997" height="708">
+          </button>
+        </div>
+        <figcaption>FIG. 02 — composite fabrication process flow (click to enlarge)</figcaption>
+      </figure>
       <div>
-        <span class="case-tag">PROCESS &amp; DOCUMENTATION</span>
-        <h3>Introducing a systematic procedure-and-materials log</h3>
+        <span class="case-tag">MATERIALS DEVELOPMENT</span>
+        <h3>Palm Kernel Husk–HDPE Composite Fabrication</h3>
         <p class="brief">
-          At FOCOS Orthopaedic Hospital, procedures and materials used in patient
-          casting and device fabrication weren't being recorded in a structured,
-          repeatable way, making traceability and consistency harder to maintain.
+          Processing of palm kernel husk with HDPE to develop a natural-fibre-reinforced
+          composite, taking an agricultural by-product from raw husk through to a
+          test-ready specimen.
         </p>
         <div class="case-specs">
-          <div><div class="k">ROLE</div><div class="v">Designed &amp; introduced process</div></div>
-          <div><div class="k">CONTEXT</div><div class="v">Orthopaedic patient care</div></div>
-          <div><div class="k">FOCUS</div><div class="v">Traceability &amp; efficiency</div></div>
+          <div><div class="k">MATERIALS</div><div class="v">Palm kernel husk + HDPE</div></div>
+          <div><div class="k">PROCESSING</div><div class="v">Size reduction, sieving, surface treatment</div></div>
+          <div><div class="k">EVALUATION</div><div class="v">Microscopy, characterisation, testing</div></div>
         </div>
         <p class="case-outcome">
-          <strong>Outcome:</strong> Designed and introduced a systematic process for
-          recording procedures and materials used, improving documentation accuracy,
-          traceability, and operational efficiency in the orthotics department.
+          <strong>Workflow:</strong> sample acquisition → size reduction → sieving →
+          microscopy → characterisation → surface treatment → sample preparation →
+          mechanical testing.
         </p>
       </div>
     </div>
 
-    <div class="case">
-      <div class="case-media">[ photo placeholder — prosthetic socket / AFO fabrication ]</div>
+    <!-- 02 · Tensile testing -->
+    <div class="case" id="tensile-testing">
+      <figure class="case-figure">
+        <div class="case-media has-media portrait">
+          <button class="zoom" type="button" data-full="media/tensile-testing-machine.jpg" data-cap="Tensile testing machine">
+            <img src="media/tensile-testing-machine.jpg" alt="Benchtop tensile testing machine in a materials laboratory" loading="lazy" width="1050" height="1400">
+          </button>
+        </div>
+        <figcaption>FIG. 03 — benchtop tensile tester</figcaption>
+      </figure>
+      <div>
+        <span class="case-tag">MECHANICAL TESTING</span>
+        <h3>Tensile Testing Machine</h3>
+        <p class="brief">
+          Mechanical testing equipment used to evaluate material strength and
+          deformation under tensile loading, the step that turns a new material
+          into data you can design with.
+        </p>
+        <div class="case-specs">
+          <div><div class="k">TEST</div><div class="v">Uniaxial tensile loading</div></div>
+          <div><div class="k">MEASURES</div><div class="v">Strength &amp; deformation</div></div>
+          <div><div class="k">LINKS TO</div><div class="v">Materials selection, DfR</div></div>
+        </div>
+        <p class="case-outcome">
+          <strong>Why it matters:</strong> Mechanical test data underpins materials
+          selection and design-for-reliability decisions for load-bearing devices.
+        </p>
+      </div>
+    </div>
+
+    <!-- 03 · Laminated prosthetic socket -->
+    <div class="case" id="prosthetic-socket">
+      <figure class="case-figure">
+        <div class="case-media has-media portrait">
+          <button class="zoom" type="button" data-full="media/laminated-prosthetic-socket.jpg" data-cap="Laminated prosthetic socket">
+            <img src="media/laminated-prosthetic-socket.jpg" alt="Transfemoral prosthesis with a custom laminated socket, pylon and prosthetic foot" loading="lazy" width="756" height="1008">
+          </button>
+        </div>
+        <figcaption>FIG. 04 — laminated socket on assembled prosthesis</figcaption>
+      </figure>
       <div>
         <span class="case-tag">PATIENT-SPECIFIC FABRICATION</span>
-        <h3>Prosthetic sockets, AFOs &amp; custom rehabilitation devices</h3>
+        <h3>Laminated Prosthetic Socket Fabrication</h3>
         <p class="brief">
-          As a Prosthetics and Orthotics Intern at Comprehensive Rehabilitation
-          Services, I assisted in the design and fabrication of prosthetic sockets,
-          ankle-foot orthoses, and customised rehabilitation devices — gaining
-          hands-on experience across the full product development path, from
+          Custom prosthetic socket produced using a lamination process. As a
+          Prosthetics and Orthotics Intern at Comprehensive Rehabilitation Services,
+          I assisted in the design and fabrication of prosthetic sockets, from
           concept through to fitting.
         </p>
         <div class="case-specs">
-          <div><div class="k">DEVICE TYPES</div><div class="v">Sockets, AFOs, custom devices</div></div>
+          <div><div class="k">DEVICE</div><div class="v">Custom prosthetic socket</div></div>
           <div><div class="k">METHODS</div><div class="v">POP casting, lamination</div></div>
           <div><div class="k">STAGE</div><div class="v">Concept → fitting</div></div>
         </div>
         <p class="case-outcome">
           <strong>Outcome:</strong> Built practical, patient-facing fabrication
           experience that now underpins how I approach device design and
-          manufacturing decisions — with the end wearer always in view.
+          manufacturing decisions, keeping the end wearer in view.
         </p>
       </div>
     </div>
 
-    <div class="case">
-      <div class="case-media">[ photo placeholder — assembly line / QC inspection ]</div>
+    <!-- 04 · Custom AFO -->
+    <div class="case" id="custom-afo">
+      <figure class="case-figure">
+        <div class="case-media has-media portrait">
+          <button class="zoom" type="button" data-full="media/custom-afo.jpg" data-cap="Custom ankle-foot orthosis">
+            <img src="media/custom-afo.jpg" alt="Thermoformed ankle-foot orthosis with straps, D-rings and rivets" loading="lazy" width="768" height="1024">
+          </button>
+        </div>
+        <figcaption>FIG. 05 — thermoformed AFO with strapping</figcaption>
+      </figure>
+      <div>
+        <span class="case-tag">ORTHOTIC FABRICATION</span>
+        <h3>Custom AFO Fabrication</h3>
+        <p class="brief">
+          Thermoformed ankle-foot orthosis with adjustable strapping and fastening
+          components, fabricated as a patient-specific rehabilitation device.
+        </p>
+        <div class="case-specs">
+          <div><div class="k">DEVICE</div><div class="v">Ankle-foot orthosis</div></div>
+          <div><div class="k">PROCESS</div><div class="v">Thermoforming</div></div>
+          <div><div class="k">COMPONENTS</div><div class="v">Straps, D-rings, rivets</div></div>
+        </div>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> Hands-on experience across the orthotic workflow,
+          from casting and forming to trimming, fitting and attaching fastening
+          hardware for adjustability.
+        </p>
+      </div>
+    </div>
+
+    <!-- 05 · POP application & removal -->
+    <div class="case" id="pop-casting">
+      <figure class="case-figure">
+        <div class="case-media has-media portrait">
+          <button class="zoom" type="button" data-full="media/pop-application.jpg" data-cap="Cast application in clinical practice">
+            <img src="media/pop-application.jpg" alt="Forearm cast applied from hand to below the elbow" loading="lazy" width="768" height="1024">
+          </button>
+        </div>
+        <figcaption>FIG. 06 — forearm cast application</figcaption>
+      </figure>
+      <div>
+        <span class="case-tag">CLINICAL PRACTICE · PROCESS &amp; DOCUMENTATION</span>
+        <h3>Plaster of Paris (POP) Application &amp; Removal in Clinical Practice</h3>
+        <p class="brief">
+          At FOCOS Orthopaedic Hospital I supported orthopaedic patient care through
+          POP casting and rehabilitation processes, working with clinicians to deliver
+          patient-specific solutions. Procedures and materials weren't being recorded in
+          a structured, repeatable way, which made traceability harder.
+        </p>
+        <div class="case-specs">
+          <div><div class="k">ROLE</div><div class="v">Casting support; designed log process</div></div>
+          <div><div class="k">CONTEXT</div><div class="v">Orthopaedic patient care</div></div>
+          <div><div class="k">FOCUS</div><div class="v">Traceability &amp; efficiency</div></div>
+        </div>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> Designed and introduced a systematic process for
+          recording procedures and materials used, improving documentation accuracy,
+          traceability and operational efficiency in the orthotics department.
+        </p>
+      </div>
+    </div>
+
+    <!-- 06 · Onshape CAD (video) -->
+    <div class="case" id="onshape-cad">
+      <figure class="case-figure">
+        <div class="case-media has-media video">
+          <video controls muted playsinline preload="metadata" poster="media/onshape-cad-poster.jpg">
+            <source src="media/onshape-cad-modelling.mp4" type='video/mp4; codecs="avc1.640028"'>
+            <source src="media/onshape-cad-modelling.webm" type='video/webm; codecs="vp9"'>
+            Your browser can't play this video. <a href="media/onshape-cad-modelling.mp4">Download it here</a>.
+          </video>
+        </div>
+        <figcaption>VIDEO — crankshaft model in Onshape (33 s screen recording)</figcaption>
+      </figure>
+      <div>
+        <span class="case-tag">CAD MODELLING</span>
+        <h3>Onshape CAD Modelling Practice</h3>
+        <p class="brief">
+          A parametric crankshaft modelled in Onshape, built up from sketches,
+          extrudes and a revolve into a single part, alongside SolidWorks
+          design work.
+        </p>
+        <div class="case-specs">
+          <div><div class="k">TOOL</div><div class="v">Onshape</div></div>
+          <div><div class="k">PART</div><div class="v">Crankshaft</div></div>
+          <div><div class="k">FEATURES</div><div class="v">Sketch, extrude, revolve</div></div>
+        </div>
+        <p class="case-outcome">
+          <strong>Skills shown:</strong> Feature-based 3D modelling and design intent,
+          complementing SolidWorks, CAD and DfM/DfA practice.
+        </p>
+      </div>
+    </div>
+
+    <!-- Regulated manufacturing (no deck media) -->
+    <div class="case" id="metaphysis">
+      <div class="case-media text-panel">
+        <div class="big">ISO 13485</div>
+        <div class="rule"></div>
+        <div class="small">Class I devices · assembly · inspection · audit readiness</div>
+      </div>
       <div>
         <span class="case-tag">REGULATED MANUFACTURING &amp; QUALITY</span>
         <h3>Class I device assembly, inspection &amp; audit readiness</h3>
@@ -679,6 +894,12 @@
     </div>
   </div>
 </section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="lb-close" type="button" aria-label="Close">&times;</button>
+  <img alt="">
+  <div class="lb-cap"></div>
+</div>
 
 <!-- ================= EDUCATION / CERTIFICATIONS ================= -->
 <section id="education">
@@ -707,8 +928,7 @@
           <li><span>Diploma in Occupational Health and Safety Management — Imperial College of Mines and Safety</span><span class="yr mono">2021</span></li>
         </ul>
         <p style="font-size:0.85rem;color:#6B7170;margin-top:18px;">
-          Working knowledge: ISO 13485 · ISO 14971 · ISO 10993 · GMP principles ·
-          CAPA frameworks
+          Working knowledge: ISO 13485 · ISO 14971 · ISO 10993 · GMP principles · CAPA frameworks
         </p>
       </div>
     </div>
@@ -781,6 +1001,21 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+  })();
+
+  (function(){
+    var lb=document.getElementById('lightbox'); if(!lb) return;
+    var img=lb.querySelector('img'), cap=lb.querySelector('.lb-cap'), closeBtn=lb.querySelector('.lb-close'), last=null;
+    function close(){ lb.classList.remove('open'); img.removeAttribute('src'); if(last) last.focus(); }
+    document.querySelectorAll('button.zoom').forEach(function(b){
+      b.addEventListener('click',function(){
+        last=b; img.src=b.dataset.full; img.alt=b.querySelector('img').alt; cap.textContent=b.dataset.cap||'';
+        lb.classList.add('open'); closeBtn.focus();
+      });
+    });
+    closeBtn.addEventListener('click',close);
+    lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('open')) close(); });
   })();
 </script>
 </body>
